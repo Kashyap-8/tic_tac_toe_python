@@ -28,6 +28,36 @@ class Gamestate:
         self.moves_made += 1 
         return True
     
-
-
-
+    def check_winner(self):
+        #check row (Note: unlike c python let's use use chain comparisions)
+        if(self.board[0][0] == self.board[0][1] == self.board[0][2] != ' '):
+            return self.board[0][0]
+        if(self.board[1][0] == self.board[1][1] == self.board[1][2] != ' '):
+            return self.board[1][0]
+        if(self.board[2][0] == self.board[2][1] == self.board[2][2] != ' '):
+            return self.board[2][0]
+        
+        #check columns
+        if(self.board[0][0] == self.board[1][0] == self.board[2][0] != ' '):
+            return self.board[0][0]
+        if(self.board[0][1] == self.board[1][1] == self.board[2][1] != ' '):
+            return self.board[0][1]
+        if(self.board[0][2] == self.board[1][2] == self.board[2][2] != ' '):
+            return self.board[0][2]
+        
+        #check diagonals 
+        if(self.board[0][0] == self.board[1][1] == self.board[2][2] != ' '):
+            return self.board[0][0]
+        if(self.board[2][0] == self.board[1][1] == self.board[0][2] != ' '):
+            return self.board[2][0] 
+        
+        if(self.moves_made == 9):
+            return 'D'
+        return ' '
+    
+    def switch_player(self): 
+        if (self.current_player == 'x'):
+            self.current_player = 'o'
+        else:
+            self.current_player = 'x'
+        
