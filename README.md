@@ -29,4 +29,5 @@ This project is a simple implementation of the classic Tic Tac Toe game. It was 
 
 ## License
 
+<<<<<<< HEAD
 This project is intended for educational purposes.
