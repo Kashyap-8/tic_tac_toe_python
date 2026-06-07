@@ -60,4 +60,37 @@ class Gamestate:
             self.current_player = 'o'
         else:
             self.current_player = 'x'
-        
+
+    def game_loop(self):
+        while(True):
+            self.print_board()
+            try:
+                #the user input must be inside the try
+                # Using f string format
+                user_input = input(f"Player {self.current_player} enter row col eg (0 0): ")
+                row, col = user_input.split()
+                row, col = int(row), int(col)
+
+            #catches bad format:
+            except: 
+                print("Invalid input please enter two coordinates eg. 0 0")
+                continue
+            #catches bad coordinate
+            if not self.make_move(row, col): 
+                print("Invalid move try again")
+                continue
+
+            winner = self.check_winner()
+            if (winner) != ' ':
+                self.print_board()
+                if winner == 'D':
+                    print("It's a draw")
+                else:
+                    print(f"we have a winner: {winner}")
+                break
+            self.switch_player()
+
+if __name__ == "__main__":
+    game = Gamestate()
+    game.game_loop() 
+
