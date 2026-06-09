@@ -36,18 +36,6 @@ This project is a simple implementation of the classic Tic Tac Toe game. It was 
 
 * Python 3.10 or later
 
-## Run
-
-```bash
-python tic_tac_toe.py
-```
-
-Or:
-
-```bash
-python3 tic_tac_toe.py
-```
-
 ## License
 
 This project is intended for educational purposes.
