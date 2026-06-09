@@ -48,8 +48,6 @@ Or:
 python3 tic_tac_toe.py
 ```
 
-## Future Roadmap
-
 ## License
 
 This project is intended for educational purposes.
