@@ -4,9 +4,8 @@ A command-line Tic Tac Toe game written in Python.
 
 ## Overview
 
-This project is a simple implementation of the classic Tic Tac Toe game. It was created to practice Python programming fundamentals, including control flow, functions, object-oriented programming, user input handling, and game logic.
+This project is a simple implementation of the classic Tic Tac Toe game. It was initially created to refresh my Python programming fundamentals, and object-oriented programming. I plan on adding features until it becomes complex enough that it evolves into something entirely different. 
 
-The project is also intended to evolve into a more advanced version that includes an AI opponent, improved gameplay features, and a more sophisticated architecture.
 
 ## Features
 
@@ -22,7 +21,7 @@ The project is also intended to evolve into a more advanced version that include
 * Multiple difficulty levels
 * Minimax algorithm implementation
 * Game statistics tracking
-* Graphical user interface (GUI)
+* Graphical user interface (GUI) with Pygame
 * Unit testing
 
 ## Learning Objectives
@@ -51,15 +50,6 @@ python3 tic_tac_toe.py
 
 ## Future Roadmap
 
-* [ ] Refactor game logic into separate modules
-* [ ] Implement object-oriented game architecture
-* [ ] Add AI player
-* [ ] Implement Minimax algorithm
-* [ ] Add difficulty settings
-* [ ] Create a graphical user interface
-* [ ] Add automated tests
-* [ ] Package project for distribution
-
 ## License
 
-This project is intended for educational and portfolio purposes.
+This project is intended for educational purposes.

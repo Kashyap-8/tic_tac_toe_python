@@ -90,7 +90,32 @@ class Gamestate:
                 break
             self.switch_player()
 
-if __name__ == "__main__":
-    game = Gamestate()
-    game.game_loop() 
+
+# pygame libraries: https://www.pygame.org/docs/
+import pygame
+# game loop on pygame 
+pygame.init()
+screen = pygame.display.set_mode((1280, 720))
+clock = pygame.time.Clock() #clock to keep track of time?
+pygame.display.set_caption("tic tac toe") # title
+
+running = True 
+while running: 
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT:
+            running = False
+    
+    screen.fill("purple")
+
+    pygame.display.flip()
+
+    clock.tick(60) #limits fps to 60 Hz
+
+pygame.quit()
+
+
+
+# if __name__ == "__main__":
+#     game = Gamestate()
+#     game.game_loop() 
 
