@@ -91,7 +91,17 @@ class Gamestate:
             self.switch_player()
 
 
+# if __name__ == "__main__":
+#     game = Gamestate()
+#     game.game_loop() 
+
+
+
+
+
+
 # pygame libraries: https://www.pygame.org/docs/
+
 import pygame
 # game loop on pygame 
 pygame.init()
@@ -99,23 +109,40 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock() #clock to keep track of time?
 pygame.display.set_caption("tic tac toe") # title
 
+
+def draw_board(screen): 
+    WIDTH, HEIGHT = 1280, 720 
+
+    #cell size
+    cell_width = WIDTH // 3 
+    cell_height = HEIGHT // 3 
+
+    #color 
+    BLACK = (0, 0, 0)
+    LINE_WIDTH = 3
+
+    # vertical lines
+    pygame.draw.line(screen, BLACK, (cell_width, 0), (cell_width, HEIGHT), LINE_WIDTH)
+    pygame.draw.line(screen, BLACK, (cell_width * 2, 0), (cell_width * 2, HEIGHT), LINE_WIDTH) 
+
+    # horizontal lines (note that the parameters are flipped)
+    pygame.draw.line(screen, BLACK, (0, cell_height), (WIDTH, cell_height), LINE_WIDTH)
+    pygame.draw.line(screen, BLACK, (0, cell_height * 2), (WIDTH, cell_height * 2), LINE_WIDTH)
+
 running = True 
 while running: 
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             running = False
     
-    screen.fill("purple")
+    screen.fill("grey")
+    
+    #call draw board function
+    draw_board(screen)
 
     pygame.display.flip()
 
     clock.tick(60) #limits fps to 60 (60Hz)
 
 pygame.quit()
-
-
-
-# if __name__ == "__main__":
-#     game = Gamestate()
-#     game.game_loop() 
 
