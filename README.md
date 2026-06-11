@@ -13,7 +13,6 @@ This project is a simple implementation of the classic Tic Tac Toe game. It was 
 * Command-line interface
 * Win and draw detection
 * Input validation
-* Clean and readable Python implementation
 
 ## Planned Features
 
@@ -23,14 +22,6 @@ This project is a simple implementation of the classic Tic Tac Toe game. It was 
 * Game statistics tracking
 * Graphical user interface (GUI) with Pygame
 * Unit testing
-
-## Learning Objectives
-
-
-* Python programming fundamentals
-* Object-oriented programming
-* Algorithm design
-* State management
 
 ## Requirements
 
