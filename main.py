@@ -91,9 +91,9 @@ class Gamestate:
             self.switch_player()
 
 
-# if __name__ == "__main__":
-#     game = Gamestate()
-#     game.game_loop() 
+if __name__ == "__main__":
+    game = Gamestate()
+    # game.game_loop() 
 
 
 
@@ -109,23 +109,46 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock() #clock to keep track of time?
 pygame.display.set_caption("tic tac toe") # title
 
+#constants for the pygame window
+WIDTH, HEIGHT = 1280, 720 
+#cell size
+cell_width = WIDTH // 3 
+cell_height = HEIGHT // 3 
+#color for the grid
+BLACK = (0, 0, 0)
+#grid border width
+LINE_WIDTH = 3
 
-def draw_board(screen): 
-    WIDTH, HEIGHT = 1280, 720 
+# constants for the draw_board (shapes: 'x' or 'o')
+X_COLOR = (255, 0, 0)
+O_COLOR = (0, 0, 255)
+size = 80 
+radius = 80
 
-    #cell size
-    cell_width = WIDTH // 3 
-    cell_height = HEIGHT // 3 
 
-    #color 
-    BLACK = (0, 0, 0)
-    LINE_WIDTH = 3
+def draw_board(screen, game): 
 
-    # vertical lines
+    for row in range(3): 
+        for col in range(3): 
+            cell = game.board[row][col]
+            
+            center_x = col * cell_width  + cell_width  // 2   
+            center_y = row * cell_height + cell_height // 2 
+            if cell == 'x':
+                #diagonal
+                # top left to bottom right
+                pygame.draw.line(screen, X_COLOR, (center_x - size, center_y - size), (center_x + size, center_y + size), LINE_WIDTH)
+                # top right to bottom left
+                pygame.draw.line(screen, X_COLOR, (center_x + size, center_y - size), (center_x - size, center_y + size), LINE_WIDTH)
+            elif cell == 'o':
+                #circle 
+                pygame.draw.circle(screen, O_COLOR, (center_x, center_y), radius, LINE_WIDTH)
+
+    # vertical grid lines
     pygame.draw.line(screen, BLACK, (cell_width, 0), (cell_width, HEIGHT), LINE_WIDTH)
     pygame.draw.line(screen, BLACK, (cell_width * 2, 0), (cell_width * 2, HEIGHT), LINE_WIDTH) 
 
-    # horizontal lines (note that the parameters are flipped)
+    # horizontal grif lines (note that the parameters are flipped)
     pygame.draw.line(screen, BLACK, (0, cell_height), (WIDTH, cell_height), LINE_WIDTH)
     pygame.draw.line(screen, BLACK, (0, cell_height * 2), (WIDTH, cell_height * 2), LINE_WIDTH)
 
@@ -138,7 +161,7 @@ while running:
     screen.fill("grey")
     
     #call draw board function
-    draw_board(screen)
+    draw_board(screen, game)
 
     pygame.display.flip()
 
