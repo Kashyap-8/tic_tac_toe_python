@@ -1,3 +1,7 @@
+# pygame libraries: https://www.pygame.org/docs/
+import pygame
+
+
 
 class Gamestate: 
     def __init__(self):
@@ -91,18 +95,11 @@ class Gamestate:
             self.switch_player()
 
 
-if __name__ == "__main__":
-    game = Gamestate()
-    # game.game_loop() 
 
 
 
 
 
-
-# pygame libraries: https://www.pygame.org/docs/
-
-import pygame
 # game loop on pygame 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -152,6 +149,9 @@ def draw_board(screen, game):
     pygame.draw.line(screen, BLACK, (0, cell_height), (WIDTH, cell_height), LINE_WIDTH)
     pygame.draw.line(screen, BLACK, (0, cell_height * 2), (WIDTH, cell_height * 2), LINE_WIDTH)
 
+
+
+game = Gamestate()
 running = True 
 while running: 
     for event in pygame.event.get(): 
