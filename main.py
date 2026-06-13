@@ -116,9 +116,9 @@ BLACK = (0, 0, 0)
 #grid border width
 LINE_WIDTH = 3
 
-# constants for the draw_board (shapes: 'x' or 'o')
-X_COLOR = (255, 0, 0)
-O_COLOR = (0, 0, 255)
+# color for (shapes: 'x' or 'o')
+X_COLOR = "#151922" #I went with 'cool black' ;)
+O_COLOR = "#781714"
 size = 80 
 radius = 80
 
@@ -157,8 +157,17 @@ while running:
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             running = False
-    
-    screen.fill("grey")
+        
+        # https://www.pygame.org/docs/ref/mouse.html#pygame.mouse.get_pressed
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = event.pos 
+            col = mouse_x // cell_width
+            row = mouse_y // cell_height
+
+            game.make_move(row, col)
+            game.switch_player()
+    # Goggled background color to reduce eye strain    
+    screen.fill("#FBF0D9") 
     
     #call draw board function
     draw_board(screen, game)
