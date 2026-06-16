@@ -175,11 +175,22 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = event.pos 
             col = mouse_x // cell_width
-            row = mouse_y // cell_height
-
-            game.make_move(row, col)
-            game.switch_player()
-    # Goggled background color to reduce eye strain    
+            row = mouse_y // cell_height 
+            
+            if game.make_move(row, col): 
+                winner = game.check_winner()
+                if winner != ' ': 
+                    draw_board(screen, game)
+                    pygame.display.flip()
+                    if winner == 'D': 
+                        pygame.display.set_caption("it's a draw!")
+                    else: 
+                        pygame.display.set_caption(f"winner: {winner}!")
+                    pygame.time.wait(3000) # 3 seconds wait until screen closes
+                    running = False
+                else:
+                    game.switch_player()
+# Goggled background color to reduce eye strain    
     screen.fill("#FBF0D9") 
     
     #call draw board function
