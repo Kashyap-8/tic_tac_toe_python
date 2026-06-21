@@ -66,11 +66,7 @@ class Gamestate:
             self.current_player = 'x'
 
     def game_loop(self):
-<<<<<<< HEAD
         while True:
-=======
-        while(True):
->>>>>>> 0c6003e (feat: added game_loop function)
             self.print_board()
             try:
                 #the user input must be inside the try
@@ -84,20 +80,12 @@ class Gamestate:
                 print("Invalid input please enter two coordinates eg. 0 0")
                 continue
             #catches bad coordinate
-<<<<<<< HEAD
             if not self.make_move (row, col): 
-=======
-            if not self.make_move(row, col): 
->>>>>>> 0c6003e (feat: added game_loop function)
                 print("Invalid move try again")
                 continue
 
             winner = self.check_winner()
-<<<<<<< HEAD
             if  winner != ' ':
-=======
-            if (winner) != ' ':
->>>>>>> 0c6003e (feat: added game_loop function)
                 self.print_board()
                 if winner == 'D':
                     print("It's a draw")
@@ -106,7 +94,6 @@ class Gamestate:
                 break
             self.switch_player()
 
-<<<<<<< HEAD
 
 
 
@@ -201,9 +188,4 @@ while running:
     clock.tick(60) #limits fps to 60 (60Hz)
 
 pygame.quit()
-=======
-if __name__ == "__main__":
-    game = Gamestate()
-    game.game_loop() 
->>>>>>> 0c6003e (feat: added game_loop function)
 
