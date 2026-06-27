@@ -1,7 +1,7 @@
 # pygame libraries: https://www.pygame.org/docs/
 import pygame
 
-
+import random # for the computer move right now
 
 class Gamestate: 
     def __init__(self):
@@ -94,8 +94,7 @@ class Gamestate:
                 break
             self.switch_player()
 
-
-
+    
 
 
 
@@ -149,7 +148,15 @@ def draw_board(screen, game):
     pygame.draw.line(screen, BLACK, (0, cell_height), (WIDTH, cell_height), LINE_WIDTH)
     pygame.draw.line(screen, BLACK, (0, cell_height * 2), (WIDTH, cell_height * 2), LINE_WIDTH)
 
+def computer_move(game): 
+    empty_cells = [] 
+    for row in range(3): 
+        for col in range(3): 
+            if game.board[row][col] == ' ': 
+                empty_cells.append((row, col))
 
+    row, col = random.choice(empty_cells)
+    game.make_move(row, col)
 
 game = Gamestate()
 running = True 
@@ -169,22 +176,29 @@ while running:
                 if winner != ' ': 
                     draw_board(screen, game)
                     pygame.display.flip()
-                    if winner == 'D': 
-                        pygame.display.set_caption("it's a draw!")
-                    else: 
-                        pygame.display.set_caption(f"winner: {winner}!")
-                    pygame.time.wait(3000) # 3 seconds wait until screen closes
-                    running = False
+                    pygame.display.set_caption(f"winner: {winner}!" if winner != 'D' else "It's a draw!")
+                    pygame.time.wait(3000) # wait 3s until screen closes
+                    running = False 
                 else:
-                    game.switch_player()
-# Goggled background color to reduce eye strain    
+                        # switch computer 
+                        game.switch_player()
+
+                        # computer 
+                        computer_move(game)
+
+                        winner = game.check_winner()
+                        if winner != ' ':
+                            pygame.display.flip()
+                            pygame.display.set_caption(f"winner: {winner}!" if winner != 'D' else "It's a draw!")
+                            pygame.time.wait(3000) 
+                            running = False
+                        else:
+                            game.switch_player()
+    #Goggled background color to reduce eye strain    
     screen.fill("#FBF0D9") 
-    
     #call draw board function
     draw_board(screen, game)
-
     pygame.display.flip()
-
     clock.tick(60) #limits fps to 60 (60Hz)
 
 pygame.quit()
